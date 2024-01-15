@@ -1,0 +1,91 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class CalculatorGUI extends JFrame implements ActionListener {
+    private JTextField num1Field, num2Field, resultField;
+
+    public CalculatorGUI() {
+        // Set up the frame
+        setTitle("Calculator GUI");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        // Create components
+        num1Field = new JTextField(10);
+        num2Field = new JTextField(10);
+        resultField = new JTextField(10);
+        resultField.setEditable(false);
+
+        JLabel num1Label = new JLabel("Number 1:");
+        JLabel num2Label = new JLabel("Number 2:");
+        JLabel resultLabel = new JLabel("Result:");
+
+        JButton addButton = new JButton("Add");
+        JButton subtractButton = new JButton("Subtract");
+        JButton multiplyButton = new JButton("Multiply");
+        JButton divideButton = new JButton("Divide");
+
+        // Set layout
+        setLayout(new GridLayout(5, 2, 5, 5));
+
+        // Add components to the frame
+        add(num1Label);
+        add(num1Field);
+        add(num2Label);
+        add(num2Field);
+        add(resultLabel);
+        add(resultField);
+        add(addButton);
+        add(subtractButton);
+        add(multiplyButton);
+        add(divideButton);
+
+        // Add action listeners
+        addButton.addActionListener(this);
+        subtractButton.addActionListener(this);
+        multiplyButton.addActionListener(this);
+        divideButton.addActionListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // Get input values
+        double num1 = Double.parseDouble(num1Field.getText());
+        double num2 = Double.parseDouble(num2Field.getText());
+
+        // Perform calculations based on the button clicked
+        double result = 0;
+        switch (e.getActionCommand()) {
+            case "Add":
+                result = num1 + num2;
+                break;
+            case "Subtract":
+                result = num1 - num2;
+                break;
+            case "Multiply":
+                result = num1 * num2;
+                break;
+            case "Divide":
+                if (num2 != 0) {
+                    result = num1 / num2;
+                } else {
+                    JOptionPane.showMessageDialog(this, "Cannot divide by zero!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                break;
+        }
+
+        // Display the result
+        resultField.setText(String.valueOf(result));
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            CalculatorGUI calculatorGUI = new CalculatorGUI();
+            calculatorGUI.setVisible(true);
+        });
+    }
+}
