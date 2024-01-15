@@ -3,9 +3,25 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * CalculatorGUI is a simple Swing-based calculator application that allows
+ * users to perform basic arithmetic operations (addition, subtraction,
+ * multiplication, and division) on two input numbers.
+ */
 public class CalculatorGUI extends JFrame implements ActionListener {
-    private JTextField num1Field, num2Field, resultField;
 
+    /** Text field for the first input number */
+    private JTextField num1Field;
+
+    /** Text field for the second input number */
+    private JTextField num2Field;
+
+    /** Text field for displaying the result of the calculation */
+    private JTextField resultField;
+
+    /**
+     * Constructs a new CalculatorGUI with the necessary components and sets up the frame.
+     */
     public CalculatorGUI() {
         // Set up the frame
         setTitle("Calculator GUI");
@@ -50,6 +66,11 @@ public class CalculatorGUI extends JFrame implements ActionListener {
         divideButton.addActionListener(this);
     }
 
+    /**
+     * Performs the arithmetic operation based on the button clicked and updates the result field.
+     *
+     * @param e The ActionEvent representing the button click.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         // Get input values
@@ -82,6 +103,11 @@ public class CalculatorGUI extends JFrame implements ActionListener {
         resultField.setText(String.valueOf(result));
     }
 
+    /**
+     * Main method to launch the CalculatorGUI application.
+     *
+     * @param args Command-line arguments (not used in this application).
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             CalculatorGUI calculatorGUI = new CalculatorGUI();
