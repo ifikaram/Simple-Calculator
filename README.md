@@ -2,6 +2,10 @@
 
 Open source code
 
-I need help creating a simple authentic calculator app for research purposes
+I need help creating a simple authentic calculator app .
 
-If you wish to contribute, contact me via Discord
+It will be used for research purposes.
+
+If you wish to contribute, contact me via Discord.
+
+Work will be done in Java!
